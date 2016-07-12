@@ -7,13 +7,7 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-<ul>
-<li> <%=  link_to "Contact", contact_url %>
-<li> <%=  link_to "About", about_url %>
-<li> <%=  link_to "Signup", signup_url %>
-<li> <%=  link_to "Login here", login_url %>
-</ul>
-
+    <%= render 'layouts/header' %>
   </head>
 
   <body>
