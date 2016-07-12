@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       flash[:success] = "Wow !You Are signed up!"
     else
       render 'new'
-      flash[:danger] = "Invalid signup details. Please try again"
+      flash.now[:danger] = "Invalid signup details. Please try again"
     end
   end
     private
