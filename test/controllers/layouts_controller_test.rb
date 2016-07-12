@@ -17,6 +17,7 @@ class LayoutsControllerTest < ActionDispatch::IntegrationTest
     get about_url
     assert_response :success
     assert_select "title", /About/i
+    assert_select "h1", /About Page/i
   end
 
 end
