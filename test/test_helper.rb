@@ -10,9 +10,7 @@ def is_logged_in?
 end
 
 def log_in_as(user, options = {})
-  password
-  = options[:password]
-  || 'password'
+  password = options[:password] || 'password'
   remember_me = options[:remember_me] || '1'
   if integration_test?
     post login_path, session: { email:
@@ -29,5 +27,5 @@ private
 def integration_test?
 defined?(post_via_redirect)
 end
-  Add more helper methods to be used by all tests here...
+ # Add more helper methods to be used by all tests here...
 end
