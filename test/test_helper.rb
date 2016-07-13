@@ -24,10 +24,10 @@ def log_in_as(user, options = {})
     session[:user_id] = user.id
   end
 end
-#private
-# Returns true inside an integration test.
-# def integration_test?
-# defined?(post_via_redirect)
-# end
-  # Add more helper methods to be used by all tests here...
+private
+#Returns true inside an integration test.
+def integration_test?
+defined?(post_via_redirect)
+end
+  Add more helper methods to be used by all tests here...
 end
