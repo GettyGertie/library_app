@@ -19,5 +19,6 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "successful edit" do
+    get edit_user_path(@user)
   end
 end
