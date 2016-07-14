@@ -17,6 +17,11 @@ class UsersController < ApplicationController
       flash.now[:danger] = "Invalid signup details. Please try again"
     end
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
     private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
