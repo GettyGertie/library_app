@@ -5,7 +5,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:example)
-  endi
+  end
 
   test "unsuccessful edit" do
     get edit_user_path(@user)
@@ -16,5 +16,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     "foo",
     password_confirmation: "bar" }
     assert_template 'users/edit'
+  end
+
+  test "successful edit" do
   end
 end
