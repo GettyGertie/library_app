@@ -5,5 +5,8 @@ class BooksController < ApplicationController
 
   def create
     @book = User.new(params[:book])
+    if
+      @user.save!
+      redirecr
   end
 end
