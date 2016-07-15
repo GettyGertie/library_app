@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'logins/new'
 
- root 'layouts#home'
+ root 'books#new'
 
   get 'signup' => 'users#new'
 

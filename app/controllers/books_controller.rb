@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
   def new
-    @book = Book.new
+    @book = User.new
   end
+
+
 end
