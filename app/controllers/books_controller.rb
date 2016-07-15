@@ -11,5 +11,9 @@ class BooksController < ApplicationController
     else
       render 'new'
       flash[:fail]= "Invalid book details"
+    end
   end
+
+  private
+  params.require(:user)
 end
