@@ -15,5 +15,5 @@ class BooksController < ApplicationController
   end
 
   private
-  params.require(:user)
+  params.require(:user).permit params(:title, :author, :description)
 end
