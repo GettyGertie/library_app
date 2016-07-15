@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'books/new'
+
   get 'logins/new'
 
  root 'layouts#home'
