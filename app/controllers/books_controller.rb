@@ -3,5 +3,7 @@ class BooksController < ApplicationController
     @book = User.new
   end
 
-
+  def create
+    @book = User.new(params[:book])
+  end
 end
