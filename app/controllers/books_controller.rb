@@ -6,7 +6,9 @@ class BooksController < ApplicationController
   def create
     @book = User.new(params[:book])
     if
-      @user.save!
-      redirecr
+      @book.save!
+      redirect_to @book
+    else
+      render 'new'
   end
 end
