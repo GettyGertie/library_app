@@ -10,6 +10,6 @@ class BooksController < ApplicationController
       redirect_to @book
     else
       render 'new'
-      flash[:fail]
+      flash[:fail]= "Invalid book details"
   end
 end
