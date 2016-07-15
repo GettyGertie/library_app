@@ -1,19 +1,21 @@
 class BooksController < ApplicationController
   def new
-    @book = User.new
+    @book = Book.new
   end
 
-#   def create
-#     @book = User.new
-#     if
-#       @book.save!
-#       redirect_to @book
-#     else
-#       render 'new'
-#       flash[:fail]= "Invalid book details"
-#     end
-#   end
+  def create
+    @book = Book.new(book_params)
+    if
+      @book.save!
+      redirect_to @book
+    else
+      render 'new'
+      flash[:fail]= "Invalid book details"
+    end
+  end
 
-#   private
-#   params.require(:user).permit(:title, :author, :description)
+  private
+  def book_params
+  params.require(:book).permit(:title, :author, :description)
+  end
 end
