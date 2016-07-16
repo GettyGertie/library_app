@@ -6,4 +6,10 @@ class BookTest < ActiveSupport::TestCase
                     author: "person",
                     description: "A persons book")
   end
+
+  test "book should be valid"
+  test "book should be present" do
+    @user.title = ""
+    assert @book.nil?
+  end
 end
