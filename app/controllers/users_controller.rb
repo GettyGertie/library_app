@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-
+   end
       def logged_in_user
         unless logged_in?
           flash[:danger] = "Please log in."
@@ -45,4 +45,3 @@ class UsersController < ApplicationController
       end
   end
 
-end
