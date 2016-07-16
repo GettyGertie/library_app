@@ -11,6 +11,16 @@ class BookTest < ActiveSupport::TestCase
     assert @book.valid?
   end
 
+  test "book title should be present" do
+    @user.title = ""
+    assert @book.valid?
+  end
+
+  test "book author should be present" do
+    @user.title = ""
+    assert @book.valid?
+  end
+
   test "book should be present" do
     @user.title = ""
     assert @book.valid?
