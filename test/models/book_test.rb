@@ -22,7 +22,7 @@ class BookTest < ActiveSupport::TestCase
   end
 
   test "book description should be present" do
-    @user.title = ""
+    @user.description = ""
     assert @book.valid?
   end
 end
