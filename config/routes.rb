@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'bookup' => 'books#new'
+
+  post 'bookup' => 'books#create'
+
   get 'logins/new'
 
  root 'layouts#home'
@@ -16,6 +20,8 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
-  resources :users
+  resources :books
 
+  resources :users
+  
 end
