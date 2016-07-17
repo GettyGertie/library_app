@@ -5,8 +5,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    if
-      @book.save!
+    if @book.save
       redirect_to @book
     else
       render 'new'
@@ -15,9 +14,15 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find_by(params[:id])
+    @book = Book.find_by_id(params[:id])
   end
 
+  def index
+    @book = Book.all
+  end
+
+  def destroy
+  end
   private
   def book_params
   params.require(:book).permit(:title, :author, :description)
