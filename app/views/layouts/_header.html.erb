@@ -1,13 +1,16 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container">
         <%= link_to "Gee~Lib", root_path, id: "logo" %>
         <nav>
             <ul class="nav navbar-nav navbar-right">
                 <li><%= link_to "Home", root_path %></li>
                 <li><%= link_to "About Gee~Lib", about_path %></li>
-                <% if logged_in? %>
-                    <%#= link_to "Users", '#' %>
-                    <li class="dropdown">
+                <% if logged_in? %>        
+                    <%= link_to "sample app", root_path, id: "logo" %>
+                    <nav>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><%= link_to "Home", root_path %></li>
+                            <li><%= link_to "Users", users_path %></li>
+                        <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             My Library <b class="caret"></b>
                         </a>
@@ -23,5 +26,4 @@
                     <% end %>
             </ul>
         </nav>
-    </div>
     </header>
