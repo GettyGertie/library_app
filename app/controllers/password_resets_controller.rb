@@ -49,8 +49,10 @@ end
   end
   # Confirms a valid user.
   def valid_user
-    @user.authenticated?(:reset, params[:id]))
-    redirect_to root_url
+    unless (@user && @user.activated? &&
+           @user.authenticated?(:reset, params[:id]))
+      redirect_to root_url
+    end
   end
 
   def check_expiration
