@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
+default_url_options :host => 'localhost:3000'
+
   resources :books
 
   resources :users
