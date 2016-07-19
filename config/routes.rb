@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   resources :books
 
   resources :users
+
+  resources :account_activations, only: [:edit]
   
 end

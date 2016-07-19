@@ -3,4 +3,6 @@ User.create!(name: "Getty",
             password:
             "andrew",
             password_confirmation: "andrew",
-            admin: true)
+            admin: true
+            activated: true,
+            activated_at: Time.zone.now)
