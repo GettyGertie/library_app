@@ -14,11 +14,25 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find_by_id(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def index
-    @book = Book.all
+    @books = Book.all
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if @book.update_attributes(book_params)
+      flash[:yes] = "Successful update"
+      redirect_to @book
+    else
+      render 'new'
+    end
   end
 
   def destroy

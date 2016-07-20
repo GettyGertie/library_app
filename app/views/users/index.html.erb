@@ -1,5 +1,6 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
     <% @users.each do |user| %>
-            <%= link_to user.name, user %>
+        <%#= link_to user.name, user %>
+        <%=user.name%>
         <% end %>
