@@ -12,6 +12,7 @@ test "account_activation" do
   assert_match user.activation_token, mail.body.encoded
   assert_match CGI::escape(user.email), mail.body.encoded
 end
+<<<<<<< HEAD
 
 test "password_reset" do
   user = users(:example)
@@ -24,4 +25,6 @@ test "password_reset" do
     mail.body.encoded
   assert_match CGI::escape(user.email), mail.body.encoded
 end
+=======
+>>>>>>> parent of 4f57694... Finished password resets
 end

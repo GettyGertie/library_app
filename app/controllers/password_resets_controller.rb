@@ -1,7 +1,4 @@
 class PasswordResetsController < ApplicationController
-  before_action :get_user, only: [:edit, :update]
-  before_action :valid_user, only: [:edit, :update]
-  before_action :check_expiration, only: [:edit, :update]
   def new
   end
   def create
@@ -19,6 +16,7 @@ class PasswordResetsController < ApplicationController
 
   def edit
   end
+<<<<<<< HEAD
 
   def update
     if password_blank?
@@ -61,4 +59,6 @@ end
       redirect_to new_password_reset_url
     end
   end
+=======
+>>>>>>> parent of 4f57694... Finished password resets
 end
