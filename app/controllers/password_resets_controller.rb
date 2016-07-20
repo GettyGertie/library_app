@@ -1,6 +1,11 @@
 class PasswordResetsController < ApplicationController
+  before_action :get_user, only: [:edit, :update]
+  before_action :valid_user, only: [:edit, :update]
+  before_action :check_expiration, only: [:edit, :update]
+
   def new
   end
+
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
     if @user
@@ -16,7 +21,6 @@ class PasswordResetsController < ApplicationController
 
   def edit
   end
-<<<<<<< HEAD
 
   def update
     if password_blank?
@@ -47,9 +51,11 @@ end
   end
   # Confirms a valid user.
   def valid_user
-    @user.authenticated?(:reset, params[:id]))
+  unless (@user && @user.activated? &&
+         @user.authenticated?(:reset, params[:id]))
     redirect_to root_url
   end
+end
 
   def check_expiration
     if @user.password_reset_expired?
@@ -57,6 +63,4 @@ end
       redirect_to new_password_reset_url
     end
   end
-=======
->>>>>>> parent of 4f57694... Finished password resets
 end

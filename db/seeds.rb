@@ -1,8 +1,8 @@
-User.create!(name: "Getty",
-            email: "gettyorawo@gmail.com",
+User.create!(name: "makatunga",
+            email: "makatunga@maks.com",
             password:
-            "andrew",
-            password_confirmation: "andrew",
+            "makatush",
+            password_confirmation: "makatush",
             admin: true
             activated: true,
             activated_at: Time.zone.now)

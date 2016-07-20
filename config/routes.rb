@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/new'
+  # get 'password_resets' => 'password_resets#new'
 
-  get 'password_resets/edit'
+  # get 'password_resets' => 'password_resets#edit'
 
   get 'bookup' => 'books#new'
 
   post 'bookup' => 'books#create'
 
-  get 'logins/new'
 
  root 'layouts#home'
 
