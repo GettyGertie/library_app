@@ -59,7 +59,7 @@ BCrypt::Password.create(string, cost: cost)
     end
 
     def password_reset_expired?
-    reset_sent_at < 2.hours.ago
+    reset_sent_at < 10.seconds.ago
     end
 
     private
