@@ -20,8 +20,10 @@
                             My Library <b class="caret"></b>
                         </a>
                         <ul class="menu vertical">
-                            <li><%= link_to "Library Profile", current_user %></li>
-                            <li><%= link_to "Edit Details", edit_user_path(current_user) %></li></li>
+                            <li> <h1><%= current_user.name %></h1>
+                                <li><%= link_to "Library Profile", current_user %>
+                                    <%= pluralize(current_user.books.count, "book") %></li>
+                            <li><%= link_to "Edit Details", edit_user_path(current_user) %></li>
                             <li> <%= link_to "Log out", logout_path, method: "delete" %> </li>
                          </ul>
                         </li>

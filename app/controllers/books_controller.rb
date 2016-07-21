@@ -1,10 +1,12 @@
 class BooksController < ApplicationController
+  before_action :correct_user, only: [:destroy, :create, :edit, :update]
   def new
     @book = Book.new
   end
 
   def create
-    @book = Book.new(book_params)
+    # @book = Book.new(book_params)
+    @book = current_user.books.build(book_params)
     if @book.save
       redirect_to @book
     else
@@ -36,9 +38,18 @@ class BooksController < ApplicationController
   end
 
   def destroy
-  end
-  private
+    @book.destroy
+    flash[:success] = "Book deleted"
+    redirect_to request.referrer || root_url
+    end
+    
+    private
   def book_params
   params.require(:book).permit(:title, :author, :description)
+  end
+
+  def correct_user
+    @book = current_user.books.find_by(id: params[:id])
+    redirect_to root_url if @book.nil?
   end
 end
