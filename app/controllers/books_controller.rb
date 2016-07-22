@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-  before_action :correct_user, only: [:destroy, :create, :edit, :update]
+  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user, only: [:create, :edit, :update]
   def new
     @book = Book.new
   end
@@ -49,7 +50,7 @@ class BooksController < ApplicationController
   end
 
   def correct_user
-    @book = current_user.book.find_by(id: params[:id])
-    redirect_to root_url if @book.nil?
+    @book = current_user.books.find_by(params[:id])
+   # redirect_to root_url if @book.nil?
   end
 end

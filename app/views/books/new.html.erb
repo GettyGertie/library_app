@@ -1,10 +1,10 @@
 <%= provide(:title, "Add book")  %>
-<%= form_for (@book)  do |f| %>
+<%= form_for Book.new  do |f| %>
 <%= f.label :title%>
 <%= f.text_field :title%>
 <%= f.label :author%>
-<%= f.text_field :author%>
+<%= f.text_area :author%>
 <%= f.label :description%>
-<%= f.text_field :description %>
+<%= f.text_area :description %>
 <%= f.submit %>
 <% end %>
