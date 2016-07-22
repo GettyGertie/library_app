@@ -49,7 +49,7 @@ class BooksController < ApplicationController
   end
 
   def correct_user
-    @book = current_user.books.find_by(id: params[:id])
+    @book = current_user.book.find_by(id: params[:id])
     redirect_to root_url if @book.nil?
   end
 end
