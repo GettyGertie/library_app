@@ -49,9 +49,6 @@ class BooksController < ApplicationController
   def borrowed_books
     #Returns all the borrowed books
     @books = Book.where(whereabouts: "borrowed")
-    @books.each do |book|
-    @user = User.find_by(id: book.borrower_id)
-    end
   end
 
   #Executes when admin gives away book
