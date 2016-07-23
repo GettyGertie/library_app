@@ -5,6 +5,14 @@
     <% if current_user.admin? %>
         <li><%= b.title %><li>
     <% else %>
-        <li><%=b.title%> | <%=link_to "Borrow Book", borrow_url(id: b.id, user_id: b.user_id)%></li>
+        <li><%=b.title%> | 
+            <!-- Check bookstatus -->
+            <% if b.bookstatus == "unavailable" %>
+                <!-- Display "UNAVAILABLE" -->
+                <b>UNAVAILABLE</b>
+            <% else %>
+                <!-- Display link to borrow book -->
+                <%=link_to "Borrow Book", borrow_url(id: b.id, user_id: b.user_id)%></li>
+            <% end %>
     <% end %>
 <%end%>
