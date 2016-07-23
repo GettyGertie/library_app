@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'bookup' => 'books#create'
 
   get 'borrow' => 'books#borrow'
+  get 'borrowed' => 'books#borrowed_books'
 
  root 'layouts#home'
 

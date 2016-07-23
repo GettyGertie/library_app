@@ -1,0 +1,4 @@
+<h3>Borrowed Books</h3>
+<% @books.each do |bk| %>
+    <li><%=bk.title%> | Borrowed by | <%= link_to "GIVE", '#' %><li>
+<% end %>
