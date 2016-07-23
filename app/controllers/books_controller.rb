@@ -43,6 +43,17 @@ class BooksController < ApplicationController
     flash[:success] = "Book deleted"
     redirect_to request.referrer || root_url
     end
+  def borrowed_books
+    @book = Book.where(whereabouts: "borrowed")
+  end
+
+    def borrow
+      #find book clicked
+    @book = Book.find_by(id: params[:id])
+ @book.update_attribute(:whereabouts, "borrowed")
+ redirect_to books_path
+    end
+
     
     private
   def book_params
