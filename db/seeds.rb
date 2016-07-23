@@ -12,7 +12,6 @@ email = "you-#{n+1}@seeds.org"
 password = "password"
 User.create!(name: name,
 email: email,
-password:
-password,
+password: password,
 password_confirmation: password)
 end
