@@ -49,13 +49,17 @@ class BooksController < ApplicationController
   def borrowed_books
     #Returns all the borrowed books
     @books = Book.where(whereabouts: "borrowed")
+    @books.each do |book|
+    @user = User.find_by(id: book.borrower_id)
+    end
   end
 
   #Executes when admin gives away book
   def give_book
     @book = Book.find_by(id: params[:id])
     #update whereabout to "give_away" so book does not appear in the borrowed books list anymore
-    @book.update_attributes(bookstatus: "unavailable", whereabouts: "given_away")
+    @book.update_attributes(bookstatus: "unavailable", whereabouts: "given_away", 
+                            lend_time: Time.zone.now, due_date: 1.minute.from_now)
     flash[:success] = "The book #{@book.title} has now been lent away."
     redirect_to borrowed_path
   end
@@ -63,12 +67,12 @@ class BooksController < ApplicationController
     def borrow
       #find book clicked
     @book = Book.find_by(id: params[:id])
-    @book.update_attribute(:whereabouts, "borrowed")
+    borrower_id = params[:user_id]
+    @book.update_attributes(whereabouts: "borrowed", borrower_id: borrower_id)
     flash[:success] = "You have borrowed #{@book.title}"
     redirect_to books_path
     end
 
-    
     private
   def book_params
   params.require(:book).permit(:title, :author, :description, :quantity, :isbn)
