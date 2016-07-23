@@ -1,6 +1,6 @@
 <% provide(:title, 'All books') %>
 <h1>All books</h1>
 
-<%= @books.each do |b| %>
-    <%=b.title%>||<%=link_to "Borrow Book", borrow_url(id: b.id, user_id: b.user_id)%>
+<% @books.each do |b| %>
+    <li><%=b.title%>||<%=link_to "Borrow Book", borrow_url(id: b.id, user_id: b.user_id)%></li>
 <%end%>
