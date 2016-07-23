@@ -51,6 +51,15 @@ class BooksController < ApplicationController
     @books = Book.where(whereabouts: "borrowed")
   end
 
+  #Executes when admin gives away book
+  def give_book
+    @book = Book.find_by(id: params[:id])
+    #update whereabout to "give_away" so book does not appear in the borrowed books list anymore
+    @book.update_attributes(bookstatus: "unavailable", whereabouts: "given_away")
+    flash[:success] = "The book #{@book.title} has now been lent away."
+    redirect_to borrowed_path
+  end
+
     def borrow
       #find book clicked
     @book = Book.find_by(id: params[:id])

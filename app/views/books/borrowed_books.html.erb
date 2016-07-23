@@ -1,4 +1,4 @@
 <h3>Borrowed Books</h3>
 <% @books.each do |bk| %>
-    <li><%=bk.title%> | Borrowed by | <%= link_to "GIVE", '#' %><li>
+    <li><%=bk.title%> | Borrowed by | <%= link_to "GIVE", give_path(id: bk.id) %><li>
 <% end %>
