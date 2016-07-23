@@ -1,40 +1,26 @@
 <div class="top-bar">
-       <div class="top-bar-left">
-<header class="navbar navbar-fixed-top navbar-inverse">
-        <%= link_to "Gee~Lib", root_path, id: "logo" %>
-        <nav>
-            <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to "Home", root_path %></li>
-                <li><%= link_to "About Gee~Lib", about_path %></li>
-                <% if logged_in? %>        
-                    <%= link_to "sample app", root_path, id: "logo" %>
-                    <nav>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><%= link_to "Home", root_path %></li>
-                            <li><%= link_to "create book", bookup_path %></li>
-                            <li><%= link_to "Users", users_path %></li>
-                            <li><%= link_to "view books", books_path %></li>
-                            <ul class="dropdown menu" data-dropdown-menu>
-                                      <li class="menu-text">Site Title</li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            My Library <b class="caret"></b>
-                        </a>
-                        <ul class="menu vertical">
-                            <li> <h1><%= current_user.name %></h1>
-                                <li><%= link_to "Library Profile", current_user %>
-                                <%= pluralize(current_user.books.count, "book") %></li>
-                                <%=link_to "My Added Books", current_user%>
+    <div class="top-bar-left">
+        <li class="menu-text">Gee-Lib</li>
+    </div>
 
-                            <%= render 'shared/books_display'%>
-                            <li><%= link_to "Edit Details", edit_user_path(current_user) %></li>
-                            <li> <%= link_to "Log out", logout_path, method: "delete" %> </li>
-                         </ul>
-                        </li>
-                    <% else %>
-                        <li><%= link_to "Log in here", login_path %></li>
-                    <% end %>
-            </ul>
-        </nav>
-</header>
-       </div>
-       </div>
+    <div class="top-bar-right">
+        <ul class="menu">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "About Gee~Lib", about_path %></li>
+            <% if logged_in? %>        
+                <li><%= link_to "create book", bookup_path %></li>
+                <li><%= link_to "Users", users_path %></li>
+                <li><%= link_to "view books", books_path %></li>
+                <li> <h1><%= current_user.name %></h1></li>
+                <li><%= link_to "Library Profile", current_user %></li>
+                <li><%= pluralize(current_user.books.count, "book") %></li>
+                <li><%=link_to "My Added Books", current_user%></li>
+                <%# <%= render 'shared/books_display'%>
+                <li><%= link_to "Edit Details", edit_user_path(current_user) %></li>
+                <li> <%= link_to "Log out", logout_path, method: "delete" %> </li>
+            <% else %>
+                <li><%= link_to "Log in here", login_path %></li>
+            <% end %>
+        </ul>
+    </div>
+</div>
