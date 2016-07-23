@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 20160722072231) do
     t.integer  "user_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.boolean  "status",      default: false
-    t.integer  "whereabout",  default: 0
     t.integer  "whereabouts"
     t.integer  "bookstatus"
     t.index ["user_id", "created_at"], name: "index_books_on_user_id_and_created_at"
