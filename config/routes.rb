@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'give' => 'books#give_book'
   get 'given_away' => 'books#given_away_books'
   get 'returned' => 'books#return'
+  get 'destroy' => 'books#destroy'
 
  root 'layouts#home'
 

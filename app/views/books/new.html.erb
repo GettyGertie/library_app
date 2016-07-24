@@ -6,5 +6,11 @@
 <%= f.text_area :author%>
 <%= f.label :description%>
 <%= f.text_area :description %>
+
+<%= f.label :quantity %>
+<%= f.number_field :quantity %>
+
+<%= f.label :category %>
+<%= f.text_field :category %>
 <%= f.submit %>
 <% end %>

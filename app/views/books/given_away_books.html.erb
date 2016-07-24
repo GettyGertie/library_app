@@ -3,8 +3,11 @@
     <li>
         <%=bk.title%> | 
         Given to 
-        <%# <% @user = User.find_by(id: bk.borrower_id) %1> %>
-        <%# <%= @user.name %1> %>
-        <%= link_to "RETURNED", returned_path(id: bk.id) %>
+        <% @user = User.find_by(id: bk.user_id) %>
+        <%= @user.name %> |
+        <%= link_to "RETURNED", returned_path(id: bk.id) %> 
+        <% if bk.due_date < Time.zone.now %>
+            | <%= link_to "SURCHARGE", '#' %>
+        <% end %>
     <li>
 <% end %>

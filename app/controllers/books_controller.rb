@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: [:create, :edit, :update]
-  before_action :admin_user, only: [:borrowed_books, :return, :given_away_books, :give_book]
+  before_action :admin_user, only: [:borrowed_books, :return, 
+                                    :given_away_books, :give_book, :destroy]
   
   def new
     @book = Book.new
@@ -27,23 +28,24 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
+    @book = Book.find_by(id: params[:id])
   end
 
   def update
     @book = Book.find(params[:id])
     if @book.update_attributes(book_params)
-      flash[:yes] = "Successful update"
-      redirect_to @book
+      flash[:success] = "Successful update"
+      redirect_to books_path
     else
       render 'new'
     end
   end
 
   def destroy
+    @book = Book.find_by(id: params[:id])
     @book.destroy
-    flash[:success] = "Book deleted"
-    redirect_to request.referrer || root_url
+    flash[:success] = "The book #{@book.title} has been deleted!"
+    redirect_to books_path
   end
 
   def borrowed_books
@@ -85,7 +87,7 @@ class BooksController < ApplicationController
 
     private
   def book_params
-  params.require(:book).permit(:title, :author, :description, :quantity, :isbn)
+  params.require(:book).permit(:title, :author, :description, :quantity, :isbn, :category)
   end
 
   def admin_user

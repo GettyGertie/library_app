@@ -3,7 +3,10 @@
 
 <% @books.each do |b| %>
     <% if current_user.admin? %>
-        <li><%= b.title %><li>
+        <li><%= b.title %> | 
+            <%= link_to "DELETE", destroy_path(id: b.id) %> |
+            <%= link_to "EDIT", edit_book_path(id: b.id) %>
+        <li>
     <% else %>
         <li><%=b.title%> | 
             <!-- Check bookstatus -->
