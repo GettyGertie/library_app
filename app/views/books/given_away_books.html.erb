@@ -1,0 +1,10 @@
+<h3>Given Away Books</h3>
+<% @books.each do |bk| %>
+    <li>
+        <%=bk.title%> | 
+        Given to 
+        <%# <% @user = User.find_by(id: bk.borrower_id) %1> %>
+        <%# <%= @user.name %1> %>
+        <%= link_to "RETURNED", returned_path(id: bk.id) %>
+    <li>
+<% end %>

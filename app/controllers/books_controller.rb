@@ -51,6 +51,16 @@ class BooksController < ApplicationController
     @books = Book.where(whereabouts: "borrowed")
   end
 
+  def given_away_books
+    @books = Book.where(whereabouts: "given_away")
+  end
+
+  def return
+    @book =Book.find_by(id: params[:id])
+    @book.update_attributes(whereabouts: "returned", bookstatus: "available", user_id: 1)
+    redirect_to books_path
+  end
+
   #Executes when admin gives away book
   def give_book
     @book = Book.find_by(id: params[:id])

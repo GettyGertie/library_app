@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'borrow' => 'books#borrow'
   get 'borrowed' => 'books#borrowed_books'
   get 'give' => 'books#give_book'
+  get 'given_away' => 'books#given_away_books'
+  get 'returned' => 'books#return'
 
  root 'layouts#home'
 
