@@ -59,8 +59,22 @@ class BooksController < ApplicationController
 
   def return
     @book =Book.find_by(id: params[:id])
-    @book.update_attributes(whereabouts: "returned", bookstatus: "available", user_id: 1)
+    @book.update_attributes(whereabouts: "returned", bookstatus: "available", user_id: 1, 
+                           surcharge: 0)
     redirect_to books_path
+  end
+
+  #Get the surcharge view
+  def surcharge
+    @book = Book.find_by(id: params[:id])
+  end
+
+  def add_surcharge
+    @book = Book.find_by(id: params[:id])
+    @book.update_attributes(surcharge_params)
+    @book.reload
+    flash[:success] = "The book has been surcharged Ksh. #{@book.surcharge}"
+    redirect_to borrowed_path
   end
 
   #Executes when admin gives away book
@@ -69,7 +83,7 @@ class BooksController < ApplicationController
     @user = User.find_by(id: params[:borrower_id])
     #update whereabout to "give_away" so book does not appear in the borrowed books list anymore
     @book.update_attributes(bookstatus: "unavailable", whereabouts: "given_away", 
-                            lend_time: Time.zone.now, due_date: 7.days.from_now, 
+                            lend_time: Time.zone.now, due_date: 1.minute.from_now, 
                             user_id: params[:borrower_id])
     flash[:success] = "The book #{@book.title} has now been lent away."
 
@@ -88,6 +102,10 @@ class BooksController < ApplicationController
     private
   def book_params
   params.require(:book).permit(:title, :author, :description, :quantity, :isbn, :category)
+  end
+
+  def surcharge_params
+    params.require(:book).permit(:surcharge)
   end
 
   def admin_user

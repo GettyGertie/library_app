@@ -1,0 +1,9 @@
+<h3>Surcharge</h3>
+<h5><%= @book.title %></h5>
+
+<%= form_for(@book, url: surcharge_path(id: @book.id)) do |f| %>
+    <%= f.label :surcharge %>
+    <%= f.number_field :surcharge %>
+    <%= f.submit "Surcharge" %>
+<% end %>
+

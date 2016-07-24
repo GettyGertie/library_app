@@ -7,7 +7,7 @@
         <%= @user.name %> |
         <%= link_to "RETURNED", returned_path(id: bk.id) %> 
         <% if bk.due_date < Time.zone.now %>
-            | <%= link_to "SURCHARGE", '#' %>
+            | <%= link_to "SURCHARGE", surcharge_path(id: bk.id) %>
         <% end %>
     <li>
 <% end %>

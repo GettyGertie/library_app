@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'given_away' => 'books#given_away_books'
   get 'returned' => 'books#return'
   get 'destroy' => 'books#destroy'
+  get 'surcharge' => 'books#surcharge'
+  patch 'surcharge' => 'books#add_surcharge'
 
  root 'layouts#home'
 
