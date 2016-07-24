@@ -73,7 +73,7 @@ class BooksController < ApplicationController
     @book = Book.find_by(id: params[:id])
     @book.update_attributes(surcharge_params)
     @book.reload
-    flash[:success] = "The book has been surcharged Ksh. #{@book.surcharge}"
+    flash[:success] = "The book \"#{@book.title}\" has been surcharged Ksh. #{@book.surcharge}"
     redirect_to all_surcharged_books_path
   end
 
