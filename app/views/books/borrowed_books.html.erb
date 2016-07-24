@@ -5,6 +5,6 @@
         Borrowed by 
         <% @user = User.find_by(id: bk.borrower_id) %>
         <%= @user.name %>
-        <%= link_to "GIVE", give_path(id: bk.id) %>
+        <%= link_to "GIVE", give_path(id: bk.id, borrower_id: bk.borrower_id) %>
     <li>
 <% end %>

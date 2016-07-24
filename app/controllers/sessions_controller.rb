@@ -3,18 +3,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      if !user.activated?
-        log_in user
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+    @user = User.find_by(email: params[:session][:email].downcase)
+    if @user && @user.authenticate(params[:session][:password])
+      if !@user.activated?
+        log_in @user
+        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
         # check_for_delayed_books
-        if user.books.any?
-          @books = user.books
+        if @user.books.any?
+          @books = @user.books
           @books.each do |bk|
             due_date = bk.due_date
-            if due_date >= Time.zone.now
-              # send_book_due_email
+            #If book's due date is here, send email
+            if due_date == Time.zone.now || due_date < Time.zone.now
+              @user.send_book_due_email unless @user.admin?
             end
           end
         end

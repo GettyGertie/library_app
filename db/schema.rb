@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160723224019) do
     t.integer  "whereabouts", default: 0
     t.integer  "bookstatus",  default: 0
     t.datetime "lend_time"
-    t.datetime "due_date",    default: '2016-07-23 23:18:40'
+    t.datetime "due_date",    default: '2016-07-24 09:31:18'
     t.integer  "borrower_id"
     t.index ["user_id", "created_at"], name: "index_books_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_books_on_user_id"

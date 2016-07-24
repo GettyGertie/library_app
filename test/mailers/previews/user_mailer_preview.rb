@@ -14,4 +14,9 @@ end
     UserMailer.password_reset(user)
   end
 
+  def book_due
+    user = User.last
+    UserMailer.book_due(user)
+  end
+
 end

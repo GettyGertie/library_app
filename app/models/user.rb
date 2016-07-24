@@ -49,6 +49,10 @@ BCrypt::Password.create(string, cost: cost)
     UserMailer.account_activation(self).deliver_now
     end
 
+    def send_book_due_email
+        UserMailer.book_due(self).deliver_now
+    end
+
     def create_reset_digest
     self.reset_token = User.new_token
     update_attribute(:reset_digest, User.digest(reset_token))
