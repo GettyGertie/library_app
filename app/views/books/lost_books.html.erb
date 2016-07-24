@@ -1,0 +1,21 @@
+<h3>Lost Books</h3>
+<table>
+    <thead>
+        <th>Book Title</th>
+        <th>Lost By</th>
+        <th>Surcharge</th>
+    </thead>
+    <tbody>
+    <% @books.each do |buk| %>
+        <tr>
+            <td><%= buk.title %></td>       
+            <td>
+                <% @user = User.find_by(id: buk.user_id)%>
+                <%= @user.name %>
+            </td>
+            <td><%= buk.surcharge %></td>       
+            <td class="button"><%= link_to "SURCHARGE", surcharge_path(id: buk.id) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

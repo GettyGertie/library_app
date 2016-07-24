@@ -13,12 +13,13 @@
                     <li><%= link_to "Users", users_path %></li>
                     <li><%= link_to "Borrowed Books", borrowed_path %></li>
                     <li><%= link_to "Given Away", given_away_path  %></li>
+                    <li><%= link_to "Lost Books", lost_books_path %></li>
+                    <li><%= link_to "All Surcharged Books", all_surcharged_books_path %></li>
                 <% end %>
                 <li><%= link_to "All Books", books_path %></li>
                 <li> <h1><%= current_user.name %></h1></li>
-                <li><%= link_to "Library Profile", current_user %></li>
                 <li><%= pluralize(current_user.books.count, "book") %></li>
-                <li><%=link_to "My Added Books", current_user%></li>
+                <li> <% unless current_user.admin? %><%=link_to "My Borrowed Books", current_user %> <% end %></li>
                 <%# <%= render 'shared/books_display'%>
                 <li><%= link_to "Edit Details", edit_user_path(current_user) %></li>
                 <li> <%= link_to "Log out", logout_path, method: "delete" %> </li>

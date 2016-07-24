@@ -1,12 +1,22 @@
-<% provide(:title, "You are signed up") %>
-<h1>
-    <%= @user.name %>
-</h1>
+<% provide(:title, "My Borrowed Books") %>
+<table>
+    <thead>
+        <th>Book Title</th>
+        <th>Surcharge</th>
+    </thead>
+    <tbody>
 <% if @user.books.any? %>
-
-    <h3>Books (<%= @user.books.count %>)</h3>
-    <ol class="books">
-        <%= render @books %>
-    </ol>
-    <%#= will_paginate @microposts %>
+    <% @books.each do |buk| %>
+        <tr>
+            <td><%= buk.title %></td>       
+            <td><%= buk.surcharge %></td>       
+            <% if buk.whereabouts == "lost" %>
+                <td><b>LOST</b></td> 
+            <% else %>
+                <td class="button"><%= link_to "LOST", lost_path(id: buk.id) %></td>
+            <% end %>
+        </tr>
+    <% end %>
 <% end %>
+    </tbody>
+</table>

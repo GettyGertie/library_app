@@ -74,7 +74,23 @@ class BooksController < ApplicationController
     @book.update_attributes(surcharge_params)
     @book.reload
     flash[:success] = "The book has been surcharged Ksh. #{@book.surcharge}"
-    redirect_to borrowed_path
+    redirect_to all_surcharged_books_path
+  end
+
+  def lost
+    @book = Book.find_by(id: params[:id])
+    @book.update_attribute(:whereabouts, "lost")
+    flash[:success] = "The book #{@book.title} has been marked as lost"
+    redirect_to current_user
+  end
+
+  #Returns all surcharged books
+  def all_surcharged_books
+    @books = Book.where("surcharge > 0")
+  end
+
+  def lost_books
+    @books = Book.where(whereabouts: "lost")
   end
 
   #Executes when admin gives away book

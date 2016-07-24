@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get 'destroy' => 'books#destroy'
   get 'surcharge' => 'books#surcharge'
   patch 'surcharge' => 'books#add_surcharge'
+  get 'lost' => 'books#lost'
+  get 'lost_books' => 'books#lost_books'
+  get 'all_surcharged_books' => 'books#all_surcharged_books'
 
  root 'layouts#home'
 
