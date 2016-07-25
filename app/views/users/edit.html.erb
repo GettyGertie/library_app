@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="small-6 columns">
 <%= provide(:title, "Edit Details")  %>
 <%= form_for(@user)  do |f| %>
 <%= render 'shared/error_messages' %>
@@ -11,3 +13,5 @@
 <%= f.password_field :password_confirmation %>
 <%= f.submit %>
 <% end %>
+  </div>
+  </div>

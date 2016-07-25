@@ -1,2 +1,32 @@
-<%= @book.author %>
-<%= @book.description %>
+<div class="row">
+  <div class="small-6 columns">
+
+<h1>Created Book</h1>
+<table>
+<thead>
+    <th>Title</th>
+    
+    <th>Author</th>
+
+    <th>Status</th>
+
+    <th>Category</th>
+
+    <th>Quantity</th>
+</thead>
+<tbody>
+    <tr>
+        <td><%= @book.title%></td>
+
+        <td><%= @book.author %></td>
+
+        <td><%= @book.bookstatus %></td>
+
+        <td><%= @book.category %></td>
+
+        <td><%= @book. quantity%></td>
+    </tr>
+</tbody>
+</table>
+  </div>
+  </div>

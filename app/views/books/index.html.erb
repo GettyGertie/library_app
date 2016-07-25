@@ -1,20 +1,33 @@
 <% provide(:title, 'All books') %>
+<div class="row">
+  <div class="small-6 columns">
+
 <h1>All books</h1>
+<table>
+    <tr>
+        <td><%= form_tag(books_path, :method => "get", id: "search-form") do %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Search Books" %>
+                  <%= submit_tag "Search" %> || 
+                  <%=link_to "Escape Search", books_path%>
+                <% end %></td></tr></table>
+  </div>
+  </div>
 
 <% @books.each do |b| %>
     <% if current_user.admin? %>
-        <li><%= b.title %> | 
-            <%= link_to "DELETE", destroy_path(id: b.id) %> |
-            <%= link_to "EDIT", edit_book_path(id: b.id) %>
+        <li><%= b.title %> by <%=b.author%>
+            <li class="button"/>  <%= link_to "DELETE", destroy_path(id: b.id) %> ~~~ 
+            <li class="button"/>  <%= link_to "EDIT", edit_book_path(id: b.id) %></button>
         <li>
-    <% else %>
+        <% else %>
+
         <li><%=b.title%> | 
             <!-- Check bookstatus -->
             <% if b.bookstatus == "unavailable" %>
                 <!-- Display "UNAVAILABLE" -->
                 <b>UNAVAILABLE</b>
             <% else %>
-                <!-- Display link to borrow book -->
+                               <!-- Display link to borrow book -->
                 <%=link_to "Borrow Book", borrow_url(id: b.id, user_id: current_user.id)%></li>
             <% end %>
     <% end %>

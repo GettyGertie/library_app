@@ -1,14 +1,20 @@
 <% provide(:title, "My Borrowed Books") %>
+<div class="row">
+  <div class="small-6 columns">
+
+<h4> Hello <%= current_user.name %>.You currently have<b> <%= pluralize(current_user.books.count, "book") %></b></h4>
 <table>
     <thead>
         <th>Book Title</th>
+        <th>Book Author</th>
         <th>Surcharge</th>
     </thead>
     <tbody>
 <% if @user.books.any? %>
     <% @books.each do |buk| %>
         <tr>
-            <td><%= buk.title %></td>       
+            <td><%= buk.title %></td>  
+            <td>buk.author</td>
             <td><%= buk.surcharge %></td>       
             <% if buk.whereabouts == "lost" %>
                 <td><b>LOST</b></td> 
@@ -20,3 +26,5 @@
 <% end %>
     </tbody>
 </table>
+    </div>
+    </div>

@@ -1,13 +1,19 @@
 <div class="top-bar">
     <div class="top-bar-left">
-        <li class="menu-text">Gee-Lib</li>
+        <h1>    <a href= root_path class="menu-text"> Gee~Lib</a></h1>
     </div>
 
     <div class="top-bar-right">
         <ul class="menu">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "About Gee~Lib", about_path %></li>
+            <li> <%= link_to "Sign Up", signup_url %></li></ul></div>
+
+    <div class="top-bar-left"><ul class="menu">
             <% if logged_in? %>        
+                <li> <h3>Welcome <%= current_user.name %></li></h3><br>
+               <%# <li> You have <%= pluralize(current_user.books.count, "book") %1></li> %>
+    </div><div class="top-bar-right"><ul class="menu">
                 <% if current_user.admin? %>
                     <li><%= link_to "create book", bookup_path %></li>
                     <li><%= link_to "Users", users_path %></li>
@@ -17,14 +23,16 @@
                     <li><%= link_to "All Surcharged Books", all_surcharged_books_path %></li>
                 <% end %>
                 <li><%= link_to "All Books", books_path %></li>
-                <li> <h1><%= current_user.name %></h1></li>
-                <li><%= pluralize(current_user.books.count, "book") %></li>
-                <li> <% unless current_user.admin? %><%=link_to "My Borrowed Books", current_user %> <% end %></li>
+                               <li> <% unless current_user.admin? %><%=link_to "My Borrowed Books", current_user %> <% end %></li>
                 <%# <%= render 'shared/books_display'%>
                 <li><%= link_to "Edit Details", edit_user_path(current_user) %></li>
                 <li> <%= link_to "Log out", logout_path, method: "delete" %> </li>
             <% else %>
-                <li><%= link_to "Log in here", login_path %></li>
+<div class="top-bar-right">
+        <ul class="menu">
+
+            <li><%= link_to "Log in here", login_path %></li>
+        </ul><div>
             <% end %>
         </ul>
     </div>

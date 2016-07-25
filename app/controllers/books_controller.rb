@@ -15,7 +15,7 @@ class BooksController < ApplicationController
       redirect_to @book
     else
       render 'new'
-      flash[:fail]= "Invalid book details"
+      flash[:fail]= "Invalid book details! Please fill every field."
     end
   end
 
@@ -25,7 +25,12 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-  end
+    if params[:search]
+            @books = Book.search(params[:search]).order("created_at DESC")
+                else
+                        @books = Book.all.order('created_at DESC')
+                            end
+      end
 
   def edit
     @book = Book.find_by(id: params[:id])
@@ -117,7 +122,7 @@ class BooksController < ApplicationController
 
     private
   def book_params
-  params.require(:book).permit(:title, :author, :description, :quantity, :isbn, :category)
+  params.require(:book).permit(:title, :author, :description, :quantity, :isbn, :category, :search)
   end
 
   def surcharge_params

@@ -2,12 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .success{
-    background: green;
+    background: blue;
     padding: 15px;
 }
-
+.danger{
+    background: red
+}
 .button a{
     color: black;
 }
+.fail{
+    background: grey;
+    padding: 20px;
+}
+.top-bar li {
+    a {
+        &:hover {
+                        color: black;
+                                
+        }
+            
+    }
 
+}
 
