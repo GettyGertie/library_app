@@ -12,23 +12,47 @@
                 <% end %></td></tr></table>
   </div>
   </div>
+  <table>
+      <%if !current_user.admin?%>
+                <thead>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Borrow<th>
+                </thead><%end%>
 
+                <tbody>
+
+<tr>
 <% @books.each do |b| %>
     <% if current_user.admin? %>
-        <li><%= b.title %> by <%=b.author%>
-            <li class="button"/>  <%= link_to "DELETE", destroy_path(id: b.id) %> ~~~ 
-            <li class="button"/>  <%= link_to "EDIT", edit_book_path(id: b.id) %></button>
-        <li>
-        <% else %>
+<div class="row">
+    <div class="small-3 columns">
 
-        <li><%=b.title%> | 
+        
+        <%= b.title %> by <%=b.author%>
+    </div>
+    <div class="small-3 columns">
+
+        <p class="button">   <%= link_to "DELETE", destroy_path(id: b.id) %></p>
+    </div>
+ <div class="small-3 columns">
+
+     <p class="button">  <%= link_to "EDIT", edit_book_path(id: b.id) %></p>
+ </div>
+ </div>
+<% else %>
+
+                                                                       <td><%=b.title%></td>
             <!-- Check bookstatus -->
             <% if b.bookstatus == "unavailable" %>
                 <!-- Display "UNAVAILABLE" -->
-                <b>UNAVAILABLE</b>
+                <td>   <b>UNAVAILABLE</b></td>
             <% else %>
-                               <!-- Display link to borrow book -->
-                <%=link_to "Borrow Book", borrow_url(id: b.id, user_id: current_user.id)%></li>
-            <% end %>
+                <td>  <b>AVAILABLE<b> </td>             <!-- Display link to borrow book -->
+                        <td class="button">  <%=link_to "Borrow Book", borrow_url(id: b.id, user_id: current_user.id)%></td>
+                    </tr>
+                </tbody>
+                </table>
+                <% end %>
     <% end %>
 <%end%>

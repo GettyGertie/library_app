@@ -9,12 +9,14 @@
                 <%#= link_to user.name, user %>
 </thead>
 
-<td> <% @users.each do |user| %>
+<tr> <% @users.each do |user| %>
                 
-                 <%=user.name%></td>
+    <td>  <%=user.name%></td>
 
                 <td class="button"><%=link_to "DELETE", delete_path%></td>
                 </tr>
-                </tbody>
-        </table> <%# <%=book.status%>
-<% end %></div></div>
+               <%# <%=book.status%>
+           <% end %>
+     </tbody>
+        </table> 
+    </div></div>

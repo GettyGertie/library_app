@@ -1,11 +1,17 @@
 <h3>Borrowed Books</h3>
-
+<table>
+    <thead>
+        <th>Book Title</th>
+        <th>Borrowed by</th>
+    </thead>
+    <tbody>
+        <tr>
 <% @books.each do |bk| %>
-    <li>
-        <%=bk.title%> | 
-        Borrowed by 
-        <% @user = User.find_by(id: bk.borrower_id) %>
-        <%= @user.name %>
-        <%= link_to "GIVE", give_path(id: bk.id, borrower_id: bk.borrower_id) %>
-    <li>
+    <td>        <%=bk.title%></td> 
+    <td>   Borrowed by  <% @user = User.find_by(id: bk.borrower_id) %>
+    <%= @user.name %></td>
+    <td class="button">   <%= link_to "GIVE BOOK", give_path(id: bk.id, borrower_id: bk.borrower_id) %></td>
 <% end %>
+        </tr>
+    </tbody>
+    </table>

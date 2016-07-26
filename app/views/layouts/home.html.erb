@@ -1,19 +1,5 @@
-
-<div class="row">
-    <div class="large-3 columns"></div>
-
-    <div class="large-3 columns"></div>
 <%= provide(:title, "Home")  %>
 <h1 style="text-align: center">Welcome to Gee~Lib</h1>
-<h3 style = "text-align: center"><i>Geelib be the best online liibrary you ever been on man. Too dope Imust say. 
-                                    Soo much to learn in so little time huh?
-                                    Worry no more coz life just got easier. Gee~LIb reaches out to almost everybody, I say almost 
-                                    becausse not every person isliterate. So to get in 
-                                    simply <%=link_to "Sign up", signup_path%> to create an account and get started on your learning adventure
-                                    Learn more about us in our <%=link_to "About", about_path%> page<br>
-</div>
+<%= render 'layouts/homepartial' %>
 
- Get a Gee~Lib account<%= link_to "Sign Up", signup_url %>
 
-Already have an account? <%=link_to "LogIn Here", login_path%></i></h3>
-  </div>
