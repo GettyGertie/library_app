@@ -1,3 +1,7 @@
+<div class="row">
+    <div class="large-6 columns">
+
+
 <h3>All Surchaged Books</h3>
 <table>
     <thead>
@@ -13,9 +17,11 @@
                 <% @user = User.find_by(id: buk.user_id)%>
                 <%= @user.name %>
             </td>
-            <td><%= buk.surcharge %></td>       
-            <td class="button"><%= link_to "SURCHARGE", surcharge_path(id: buk.id) %></td>
+            <td>ksh.<%= buk.surcharge %></td>       
+            <%# <td class="button"><%= link_to "SURCHARGE", surcharge_path(id: buk.id) %1></td> %>
         </tr>
     <% end %>
     </tbody>
 </table>
+    </div>
+    </div>
