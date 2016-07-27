@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user, only: [:create, :edit, :update]
+  before_action :correct_user, only: [:create, :edit, :update, :destroy]
   before_action :admin_user, only: [:borrowed_books, :return, 
                                     :given_away_books, :give_book, :destroy]
   
@@ -26,11 +26,11 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     if params[:search]
-            @books = Book.search(params[:search]).order("created_at DESC")
-                else
-                        @books = Book.all.order('created_at DESC')
-                            end
-      end
+      @books = Book.search(params[:search]).order("created_at DESC")
+    else
+      @books = Book.all.order('created_at DESC')
+    end
+  end
 
   def edit
     @book = Book.find_by(id: params[:id])
@@ -100,6 +100,7 @@ class BooksController < ApplicationController
 
   #Executes when admin gives away book
   def give_book
+    debugger
     @book = Book.find_by(id: params[:id])
     @user = User.find_by(id: params[:borrower_id])
     #update whereabout to "give_away" so book does not appear in the borrowed books list anymore

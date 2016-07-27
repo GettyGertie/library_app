@@ -4,7 +4,9 @@ class BookTest < ActiveSupport::TestCase
   def setup
     @book = Book.new(title: "book",
                     author: "person",
-                    description: "A persons book")
+                    description: "A persons book",
+                    quantity: 4,
+                    category: "romance")
   end
 
   test "book should be valid" do
