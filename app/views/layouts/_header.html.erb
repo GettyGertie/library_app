@@ -1,19 +1,25 @@
 <div class="top-bar">
+
     <div class="top-bar-left">
-        C
-        <h1>    <a href=users/root_path style="color:blue" class="menu-text"> Gee~Lib</a></h1>
+        
+        <h1>   <%= image_tag("book6.png", size: "100")%>  <a href=users/root_path style="color:blue" class="menu-text"> Gee~Lib</a></h1>
     </div>
 
     <div class="top-bar-right">
+ <div class="label">
+
         <ul class="menu">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "About Gee~Lib", about_path %></li>
-            <li> <%= link_to "Sign Up", signup_url %></li></ul></div>
-    <div class="top-bar-left"><ul class="menu">
+            <li> <%= link_to "Sign Up", signup_url %></li></ul></div></div>
+    <div class="top-bar-left"><div class="username"><ul class="menu">
             <% if logged_in? %>        
-                <li> <h3>Welcome <%= current_user.name %></li></h3><br>
-               <%# <li> You have <%= pluralize(current_user.books.count, "book") %1></li> %>
-    </div><div class="top-bar-right"><ul class="menu">
+                <%# <li> <h3 style="color:blue">Welcome <%= current_user.name %1></li></h3><br> %>
+                <%# <li> You have <%= pluralize(current_user.books.count, "book") %1></li> %></div>
+    </div><div class="top-bar-right">
+ <div class="label">
+
+           <ul class="menu">
                 <% if current_user.admin? %>
                     <li><%= link_to "create book", bookup_path %></li>
                     <li><%= link_to "Users", users_path %></li>
@@ -28,7 +34,7 @@
                 <li><%= link_to "Edit Details", edit_user_path(current_user) %></li>
                 <li> <%= link_to "Log out", logout_path, method: "delete" %> </li>
             <% else %>
-<div class="top-bar-left">
+                        <div class="top-bar-left">
         <ul class="menu">
 
             <%# <li><%= link_to "Refresh", login_path %1></li> %>
@@ -37,4 +43,4 @@
         </ul>
     </div>
 </div>
-
+</div>

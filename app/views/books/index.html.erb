@@ -1,5 +1,5 @@
 <% provide(:title, 'All books') %>
-<div class="row">
+<div class="rower">
   <div class="small-6 columns">
 
 <h1>All books</h1>
@@ -11,8 +11,7 @@
                   <%=link_to "Escape Search", books_path%>
                 <% end %></td></tr></table>
   </div>
-  </div>
-  <table>
+    <table>
       <%if !current_user.admin?%>
                 <thead>
                     <th>Title</th>
@@ -25,7 +24,7 @@
 <tr>
 <% @books.each do |b| %>
     <% if current_user.admin? %>
-<div class="row">
+<%# <div class="row"> %>
     <div class="small-3 columns">
 
         
@@ -39,16 +38,22 @@
 
      <p class="button">  <%= link_to "EDIT", edit_book_path(id: b.id) %></p>
  </div>
- </div>
+</div>
+</tr>
+                </tbody>
+    </table>
+ <table>
+        <tbody>
+           
 <% else %>
-
-                                                                       <td><%=b.title%></td>
+              <tr>
+                                                             <td><%=b.title%></td>
             <!-- Check bookstatus -->
             <% if b.bookstatus == "unavailable" %>
                 <!-- Display "UNAVAILABLE" -->
-                <td>   <b>UNAVAILABLE</b></td>
+                <td>   <b>UNAVAILABLE</b>
             <% else %>
-                <td>  <b>AVAILABLE<b> </td>             <!-- Display link to borrow book -->
+                 <b>AVAILABLE<b> </td>             <!-- Display link to borrow book -->
                         <td class="button">  <%=link_to "Borrow Book", borrow_url(id: b.id, user_id: current_user.id)%></td>
                     </tr>
                 </tbody>
@@ -56,3 +61,5 @@
                 <% end %>
     <% end %>
 <%end%>
+</div>
+
