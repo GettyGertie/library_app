@@ -5,9 +5,11 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    #Define an instance of a user with its params
   end
 
   def create
+    #this is the create action it necessarily requires a new global variable even after the new action has one.
     @user = User.new(user_params)
     # !verify_recaptcha(model: @user, message: captcha_message) || !@user.save
     if @user.save
