@@ -1,5 +1,6 @@
 class User < ApplicationRecord 
 has_many :books, dependent: :destroy
+#Find out what dependent: :destroy does, understand your code
 default_scope -> { order(created_at: :desc)  }
 attr_accessor :remember_token, :activation_token, :reset_token
 before_save :downcase_email
