@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # get 'password_resets' => 'password_resets#new'
 
   # get 'password_resets' => 'password_resets#edit'
-
+#It is highly important to use named routes
   get 'bookup' => 'books#new'
 
   post 'bookup' => 'books#create'
